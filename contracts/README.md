@@ -1,4 +1,1 @@
 # Lottery Smart Contract
-
-ClientID - 9a2db5c3c95c973c277dc571c0933890
-Secret Key - 0KggzSIr8TeV9vJvvKO5jjDbbq6mqWCT69A0L2FAe9cGnpNtiiLQZKoMLydDp-D9TmmpLxXw9GCaUKI6RZ631g
