@@ -2,13 +2,13 @@ import React from 'react';
 import BlurImage from '../BlurImage';
 import Address from './Address';
 import NavActions from './NavActions';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 function Header() {
   return (
     <header className="fixed top-0 left-0 w-full backdrop-blur-md grid grid-cols-2 md:grid-cols-5 items-center px-3 py-3">
       <div className="flex items-center space-x-2">
-        <BlurImage
+        <Image
           src={'/assets/logo.png'}
           width={60}
           height={60}

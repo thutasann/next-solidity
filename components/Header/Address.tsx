@@ -5,7 +5,6 @@ import React from 'react';
 
 function Address() {
   const address = useAddress();
-  console.log('address', address);
 
   return (
     <p className="text-xs text-emerald-500 font-semibold bg-black/20 px-3 py-2 rounded-md">

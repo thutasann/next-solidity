@@ -1,12 +1,23 @@
-import BlurImage from '@/components/BlurImage';
+'use client';
+
 import React from 'react';
 import LoginButton from './components/LoginButton';
+import Image from 'next/image';
+import { useAddress } from '@thirdweb-dev/react';
+import { redirect } from 'next/navigation';
 
 function LoginPage() {
+  const address = useAddress();
+  console.log('address', address);
+
+  if (address) {
+    redirect('/');
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="flex flex-col items-center">
-        <BlurImage
+        <Image
           src={'/assets/logo.png'}
           width={60}
           height={60}

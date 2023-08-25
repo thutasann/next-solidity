@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3",
-    "encoding": "^0.1.13",
-    "lokijs": "^1.5.12"
+    "@openzeppelin/contracts": "^4.7.3"
   }
 }
