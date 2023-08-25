@@ -1,7 +1,8 @@
 import React from 'react';
 import BlurImage from '../BlurImage';
-import NavButton from './NavButton';
-import { Bars3BottomRightIcon } from '@heroicons/react/24/solid';
+import Address from './Address';
+import NavActions from './NavActions';
+import { usePathname } from 'next/navigation';
 
 function Header() {
   return (
@@ -16,23 +17,11 @@ function Header() {
         />
         <div>
           <h1 className="text-lg font-bold text-white">TLottery</h1>
-          <p className="text-xs text-emerald-500 font-semibold">User...</p>
+          <Address />
         </div>
       </div>
 
-      <div className="hidden md:flex md:col-span-3 items-center justify-center">
-        <div className="bg-black/20 p-4 rounded-md space-x-2">
-          <NavButton isActive title="Buy Ticket" aria-label="Buy Ticet" />
-          <NavButton title="Logout" aria-label="Logout" />
-        </div>
-      </div>
-
-      <div className="flex flex-col ml-auto text-right pr-2">
-        <Bars3BottomRightIcon className="h-8 w-8 mx-auto text-white cursor-pointer hover:text-white/50" />
-        <div className="md:hidden mt-2">
-          <NavButton isActive title="Logout" aria-label="Logout" />
-        </div>
-      </div>
+      <NavActions />
     </header>
   );
 }

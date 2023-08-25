@@ -1,7 +1,9 @@
-import Header from '@/components/Header';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import CustomThirdwebProvider from '@/providers/CustomThirdWebProvider';
+import CheckAuth from '@/providers/CheckAuth';
+import { useRouter } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,10 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + ' bg-[#141717]'}>
-        <Header />
-        {children}
-      </body>
+      <CustomThirdwebProvider>
+        <CheckAuth />
+        <body className={inter.className + ' bg-[#141717]'}>{children}</body>
+      </CustomThirdwebProvider>
     </html>
   );
 }
