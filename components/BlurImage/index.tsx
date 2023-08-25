@@ -13,13 +13,7 @@ async function BlurImage({ src, ...props }: IBlurImage) {
 
   return (
     // eslint-disable-next-line jsx-a11y/alt-text
-    <Image
-      src={src}
-      fill
-      placeholder="blur"
-      blurDataURL={blurDataURL}
-      {...props}
-    />
+    <Image src={src} placeholder="blur" blurDataURL={blurDataURL} {...props} />
   );
 }
 
