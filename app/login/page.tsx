@@ -8,7 +8,6 @@ import { redirect } from 'next/navigation';
 
 function LoginPage() {
   const address = useAddress();
-  console.log('address', address);
 
   if (address) {
     redirect('/');
