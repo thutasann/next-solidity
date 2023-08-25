@@ -1,20 +1,12 @@
-'use client';
-
 import React from 'react';
 import LoginButton from './components/LoginButton';
 import Image from 'next/image';
-import { useAddress } from '@thirdweb-dev/react';
-import { redirect } from 'next/navigation';
+import AuthCheck from './components/AuthCheck';
 
 function LoginPage() {
-  const address = useAddress();
-
-  if (address) {
-    redirect('/');
-  }
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
+      <AuthCheck />
       <div className="flex flex-col items-center">
         <Image
           src={'/assets/logo.png'}

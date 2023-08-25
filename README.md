@@ -11,3 +11,6 @@ Smart Contract is deployed to [Thirdweb](https://thirdweb.com/)
 - 🚀 Thirdweb
 - 🚀 Tailwindcss
 
+## Steps
+
+- Install Metamask on your chrome

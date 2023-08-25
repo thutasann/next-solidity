@@ -1,19 +1,12 @@
-'use client';
-
 import Header from '@/components/Header';
-import { useAddress } from '@thirdweb-dev/react';
-import { redirect } from 'next/navigation';
+import HomeSection from '@/components/HomeSection';
+import { Fragment } from 'react';
 
 export default function Home() {
-  const address = useAddress();
-
-  if (!address) {
-    redirect('/login');
-  }
-
   return (
-    <main>
+    <Fragment>
       <Header />
-    </main>
+      <HomeSection />
+    </Fragment>
   );
 }

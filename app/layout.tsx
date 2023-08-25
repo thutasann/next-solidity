@@ -21,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <CustomThirdwebProvider>
-        <body className={inter.className + ' bg-[#141717]'}>{children}</body>
-      </CustomThirdwebProvider>
+      <body className={inter.className + ' bg-[#141717]'}>
+        <CustomThirdwebProvider>{children}</CustomThirdwebProvider>
+      </body>
     </html>
   );
 }
