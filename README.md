@@ -7,3 +7,4 @@ This is the WEB3 Crypto Lottery app with nextjs and solidty
 - 🚀 Nextjs
 - 🚀 Solidity
 - 🚀 Thirdweb
+- 🚀 Tailwindcss
