@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import CustomThirdwebProvider from '@/providers/CustomThirdWebProvider';
+import ToastProvider from '@/providers/ToastProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + ' bg-[#141717]'}>
-        <CustomThirdwebProvider>{children}</CustomThirdwebProvider>
+        <CustomThirdwebProvider>
+          <ToastProvider />
+          {children}
+        </CustomThirdwebProvider>
       </body>
     </html>
   );

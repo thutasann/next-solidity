@@ -7,7 +7,7 @@ function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <AuthCheck />
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center px-4">
         <Image
           src={'/assets/logo.png'}
           width={60}
@@ -15,8 +15,10 @@ function LoginPage() {
           alt="Logo"
           className="rounded-full mb-2"
         />
-        <h1 className="mb-3 text-7xl text-white font-extrabold">T- Lottery</h1>
-        <h2 className="text-white">
+        <h1 className="text-3xl mb-3 md:text-7xl text-white text-center font-extrabold">
+          Lottery
+        </h1>
+        <h2 className="text-white text-center">
           To Get Started, you need to LogIn with you metamask
         </h2>
 

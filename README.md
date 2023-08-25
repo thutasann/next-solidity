@@ -11,6 +11,14 @@ Smart Contract is deployed to [Thirdweb](https://thirdweb.com/)
 - 🚀 Thirdweb
 - 🚀 Tailwindcss
 
-## Steps
+## Available scripts
 
-- Install Metamask on your chrome
+### Contract Version Release
+
+```bash
+cd contracts
+```
+
+```bash
+npx thirdweb@latest release
+```
