@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .stats {
+    @apply text-white p-4 flex-1 rounded-md backdrop-blur-md border-2 border-[#004337];
+  }
+
+  .stats-container {
+    @apply bg-[#091F1C]/50 p-5 rounded-lg border-[#004337] border;
+  }
+}

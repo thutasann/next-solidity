@@ -13,6 +13,28 @@ export const metadata: Metadata = {
   icons: {
     icon: './assets/logo.png',
   },
+  authors: {
+    name: 'thuta sann',
+    url: 'http://thutadev.vercel.app/',
+  },
+  openGraph: {
+    images: './assets/og.jpeg',
+    type: 'website',
+    url: 'https://next-crypto-lottery.vercel.app/',
+    locale: 'en',
+    title: 'Crypto Lottery',
+    description: 'This is the Crypto Lottery',
+    siteName: 'Crypto Lottery',
+    countryName: 'Myanmar',
+    alternateLocale: 'eng',
+  },
+  twitter: {
+    title: 'Crypto Lottery',
+    description: 'This is the Crypto Lottery',
+    card: 'summary_large_image',
+    site: '@thutasann3',
+    images: './assets/og.jpeg',
+  },
 };
 
 export default function RootLayout({
