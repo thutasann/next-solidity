@@ -1,14 +1,14 @@
 import React from 'react';
 import Address from './Address';
 import NavActions from './NavActions';
-import Image from 'next/image';
+import BlurImage from '../BlurImage';
 
 function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full backdrop-blur-md grid grid-cols-2 md:grid-cols-5 items-center px-3 py-3">
         <div className="flex items-center space-x-2">
-          <Image
+          <BlurImage
             src={'/assets/logo.png'}
             width={60}
             height={60}

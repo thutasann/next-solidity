@@ -1,14 +1,14 @@
 import React from 'react';
 import LoginButton from './components/LoginButton';
-import Image from 'next/image';
 import AuthCheck from './components/AuthCheck';
+import BlurImage from '@/components/BlurImage';
 
 function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <AuthCheck />
       <div className="flex flex-col items-center px-4">
-        <Image
+        <BlurImage
           src={'/assets/logo.png'}
           width={60}
           height={60}

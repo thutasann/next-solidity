@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <HomeSection />
+      <div className="flex-1">
+        <HomeSection />
+      </div>
     </>
   );
 }

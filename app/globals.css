@@ -16,6 +16,10 @@
   }
 
   .stats-container {
-    @apply bg-[#091F1C]/50 p-5 rounded-lg border-[#004337] border;
+    @apply bg-[#091F1C]/50 p-5 rounded-lg border-[#004337] border flex-1;
+  }
+
+  .buy-ticket-btn {
+    @apply mt-5 w-full bg-gradient-to-br from-teal-500 to-emerald-600 py-5 px-10 rounded-md text-white shadow-xl disabled:from-gray-500 disabled:to-gray-100 disabled:cursor-not-allowed hover:from-teal-300 hover:to-emerald-800 disabled:text-gray-600;
   }
 }
