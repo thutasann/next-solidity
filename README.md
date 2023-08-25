@@ -1,6 +1,8 @@
 # NEXTJS-SOLIDITY CRYPTO LOTTERY 🪙
 
-This is the WEB3 Crypto Lottery app with nextjs and solidty
+This is the WEB3 Crypto Lottery app with nextjs and solidty.
+
+Smart Contract is deployed to [Thirdweb](https://thirdweb.com/)
 
 ## Tech stacks
 
@@ -8,3 +10,4 @@ This is the WEB3 Crypto Lottery app with nextjs and solidty
 - 🚀 Solidity
 - 🚀 Thirdweb
 - 🚀 Tailwindcss
+
