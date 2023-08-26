@@ -1,14 +1,13 @@
 # NEXTJS-SOLIDITY CRYPTO LOTTERY 🪙
 
+![Demo](examples/demo.png)
+
 This is the WEB3 Crypto Lottery app with nextjs and solidty.
 
-Smart Contract is deployed to [Thirdweb](https://thirdweb.com/)
+Smart Contract is deployed to [Thirdweb](https://thirdweb.com/) and For this project, we will be using `Matic` currency.
 
-For this project, we will be using `Matic` currency.
-
-> Note: if you deploy the smart contract, you are by default the admin
-
-> Note: Whenever, a winner is drawn, the admin gets a fee from the tickets. Basically, Admin is making money off this.
+> if you deploy the smart contract, you are by default the admin
+> Whenever, a winner is drawn, the admin gets a fee from the tickets. Basically, Admin is making money off this.
 
 ## Tech stacks
 

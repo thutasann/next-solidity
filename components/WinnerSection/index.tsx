@@ -11,6 +11,7 @@ import { ethers } from 'ethers';
 import React from 'react';
 import toast from 'react-hot-toast';
 import Marquee from 'react-fast-marquee';
+import AdminControls from '../AdminControls';
 
 function WinnerSection() {
   const address = useAddress();
@@ -29,11 +30,15 @@ function WinnerSection() {
     'getWinningsForAddress',
     [address],
   );
-  console.log('winnings', winnings);
 
   const { mutateAsync: WithDrawWinnings } = useContractWrite(
     contract,
     'WithdrawWinnings',
+  );
+
+  const { data: isLotteryOperator } = useContractRead(
+    contract,
+    'lotteryOperator',
   );
 
   const handleWithdrawWinnings = async () => {
@@ -68,20 +73,23 @@ function WinnerSection() {
         </div>
       </Marquee>
 
+      {isLotteryOperator === address && (
+        <div className="flex justify-center">
+          <AdminControls />
+        </div>
+      )}
+
       {winnings && (
-        <div className="max-w-md md:max-w-2xl lg:max-w-4xl mx-auto mt-5">
+        <div className="max-w-6xl px-4 mt-5 mx-auto">
           <button
             aria-label="winner button"
-            className="buy-ticket-btn cursor-pointer !w-full"
-            onClick={handleWithdrawWinnings}
+            className="buy-ticket-btn !cursor-default"
           >
-            <span>Winner Winner Chicken Dinnger!</span>
+            <span>Winner!</span>
             <p>
               Total winnings: {ethers.utils.formatEther(winnings.toString())}{' '}
               {currency}
             </p>
-            <br />
-            <span className="font-semibold">Click Here to with Draw</span>
           </button>
         </div>
       )}
