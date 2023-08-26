@@ -12,7 +12,7 @@
 
 @layer components {
   .stats {
-    @apply text-white p-4 flex-1 rounded-md backdrop-blur-md border-2 border-[#004337];
+    @apply text-white p-4 flex-1 rounded-md backdrop-blur-md border-2 border-[#004337] hover:border-[#085a4b];
   }
 
   .stats-container {
@@ -21,5 +21,14 @@
 
   .buy-ticket-btn {
     @apply mt-5 w-full bg-gradient-to-br from-teal-500 to-emerald-600 py-5 px-10 rounded-md text-white shadow-xl disabled:from-gray-500 disabled:to-gray-100 disabled:cursor-not-allowed hover:from-teal-300 hover:to-emerald-800 disabled:text-gray-600;
+  }
+
+  .countdown {
+    @apply p-8 text-5xl text-center  text-white font-semibold rounded-lg lg:min-w-[150px]
+      bg-[#012F34];
+  }
+
+  .countdown-label {
+    @apply text-center text-white uppercase text-sm pt-4;
   }
 }

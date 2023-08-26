@@ -2,14 +2,16 @@
 
 import { useAddress, useContract, useContractRead } from '@thirdweb-dev/react';
 import { redirect } from 'next/navigation';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import FullPageLoader from '../Loader/FullPageLoader';
 import { ethers } from 'ethers';
 import { currency } from '@/libs/constants';
+import CountdownTimer from '../CountdownTimer';
 
 function HomeSection() {
   const address = useAddress();
   const [quantity, setQuantity] = useState(1);
+  const ref = useRef<any>();
 
   const { contract, isLoading } = useContract(
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS,
@@ -48,7 +50,7 @@ function HomeSection() {
           <h1 className="text-4xl mb-3 text-white font-bold text-center">
             The Next draw
           </h1>
-          <div className="flex justify-between p-2 space-x-2">
+          <div className="flex justify-between py-2 space-x-2">
             <div className="stats">
               <h2 className="text-sm">Total pool</h2>
               <p className="text-xl font-semibold">
@@ -65,6 +67,9 @@ function HomeSection() {
               </p>
             </div>
           </div>
+          <div className="mt-5 mb-3">
+            <CountdownTimer />
+          </div>
         </div>
 
         <div className="stats-container space-y-2">
@@ -79,8 +84,9 @@ function HomeSection() {
               </p>
             </div>
             <div className="flex text-white items-center space-x-2 bg-[#141a1a] border-[#004335] border p-4">
-              <p>TICKETS</p>
+              <p onClick={() => ref.current?.focus()}>TICKETS</p>
               <input
+                ref={ref.current}
                 className="flex w-full bg-transparent text-right   outline-none"
                 type="number"
                 min={1}
