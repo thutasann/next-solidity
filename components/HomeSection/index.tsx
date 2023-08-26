@@ -7,7 +7,7 @@ import {
   useContractWrite,
 } from '@thirdweb-dev/react';
 import { redirect } from 'next/navigation';
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import FullPageLoader from '../Loader/FullPageLoader';
 import { ethers } from 'ethers';
 import { currency } from '@/libs/constants';
@@ -17,11 +17,27 @@ import toast from 'react-hot-toast';
 function HomeSection() {
   const address = useAddress();
   const [quantity, setQuantity] = useState(1);
+  const [userTickets, setUserTickets] = useState(0);
   const ref = useRef<any>();
 
   const { contract, isLoading } = useContract(
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS,
   );
+
+  const { data: tickets } = useContractRead(contract, 'getTickets');
+
+  useEffect(() => {
+    if (!tickets) return;
+
+    const totalTickets: string[] = tickets;
+
+    const noOfUserTickets = totalTickets?.reduce(
+      (total, ticketAddress) => (ticketAddress === address ? total + 1 : total),
+      0,
+    );
+
+    setUserTickets(noOfUserTickets);
+  }, [tickets, address]);
 
   const { data: remainingTickets } = useContractRead(
     contract,
@@ -35,14 +51,14 @@ function HomeSection() {
 
   const { data: ticketPrice } = useContractRead(contract, 'ticketPrice');
 
-  const { mutateAsync: BuyTickets } = useContractWrite(contract, 'BuyTickets');
-
   const { data: ticketCommission } = useContractRead(
     contract,
     'ticketCommission',
   );
 
   const { data: expiration } = useContractRead(contract, 'expiration');
+
+  const { mutateAsync: BuyTickets } = useContractWrite(contract, 'BuyTickets');
 
   const handleBuyTicket = async () => {
     if (!ticketPrice) return;
@@ -170,9 +186,36 @@ function HomeSection() {
               }
               className="buy-ticket-btn"
             >
-              Buy tickets
+              Buy {quantity} tickets for{' '}
+              {ticketPrice &&
+                Number(ethers.utils.formatEther(ticketPrice.toString())) *
+                  quantity}{' '}
+              {currency}
             </button>
           </div>
+
+          {userTickets === 0 && (
+            <div className="stats">
+              <p className="text-lg mb-2">
+                You have {userTickets} Tickets in this draw{' '}
+              </p>
+
+              <div className="flex max-w-sm flex-wrap gap-x-2 gap-y-2">
+                {Array(userTickets)
+                  .fill('')
+                  .map((_, index) => {
+                    return (
+                      <p
+                        className="text-emerald-300 h-20 w-12 bg-emerald-500/30 rounded-lg flex flex-shrink-0 items-center justify-center text-xs italic"
+                        key={index}
+                      >
+                        {index + 1}
+                      </p>
+                    );
+                  })}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
