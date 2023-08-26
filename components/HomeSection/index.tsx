@@ -1,12 +1,18 @@
 'use client';
 
-import { useAddress, useContract, useContractRead } from '@thirdweb-dev/react';
+import {
+  useAddress,
+  useContract,
+  useContractRead,
+  useContractWrite,
+} from '@thirdweb-dev/react';
 import { redirect } from 'next/navigation';
 import React, { Fragment, useRef, useState } from 'react';
 import FullPageLoader from '../Loader/FullPageLoader';
 import { ethers } from 'ethers';
 import { currency } from '@/libs/constants';
 import CountdownTimer from '../CountdownTimer';
+import toast from 'react-hot-toast';
 
 function HomeSection() {
   const address = useAddress();
@@ -29,12 +35,40 @@ function HomeSection() {
 
   const { data: ticketPrice } = useContractRead(contract, 'ticketPrice');
 
+  const { mutateAsync: BuyTickets } = useContractWrite(contract, 'BuyTickets');
+
   const { data: ticketCommission } = useContractRead(
     contract,
     'ticketCommission',
   );
 
   const { data: expiration } = useContractRead(contract, 'expiration');
+
+  const handleBuyTicket = async () => {
+    if (!ticketPrice) return;
+    const notification = toast.loading('Buying your tickets....');
+
+    try {
+      // @ts-ignore
+      const data = await BuyTickets([
+        {
+          value: ethers.utils.parseEther(
+            (
+              Number(ethers.utils.formatEther(ticketPrice)) * quantity
+            ).toString(),
+          ),
+        },
+      ]);
+      toast.success('Tickets purchased successfully!', {
+        id: notification,
+      });
+    } catch (error) {
+      toast.error('Whops something went wrong', {
+        id: notification,
+      });
+      console.error('contract call error => ', error);
+    }
+  };
 
   if (isLoading) return <FullPageLoader />;
 
@@ -129,6 +163,7 @@ function HomeSection() {
             </div>
 
             <button
+              onClick={handleBuyTicket}
               disabled={
                 expiration?.toString() < Date.now().toString() ||
                 remainingTickets?.toNumber() === 0
